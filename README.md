@@ -58,11 +58,19 @@ All `*.sh` files within `~/etc/profile.d` and `~/etc/aliases.d`
 directories will be sourced into the ~/.bashrc.
 
 
-### Host-Specific Customization
+### Host-Specific
 
-A file matching ~/etc/hosts.d/`hostname -s`.sh will be sourced into the
+A file matching `~/etc/hosts.d/``hostname -s``.sh` will be sourced into the
 .bashrc as well.  This will be sourced in after everything else so you can
 override anything you want from there.
+
+### Platform-Specific
+
+A file matching `~/etc/platform.d/``uname -a``.sh` will be sourced into
+.bashrc.  For example:
+
+    ~/etc/platform.d/Darwin.sh
+    ~/etc/platform.d/Linux.sh
 
 
 Furthermore
