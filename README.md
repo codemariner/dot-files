@@ -15,6 +15,8 @@ This will create a `~/bin` and `~/etc` directory if they do not currently
 exist.  Then all corresponding files within the project bin and etc
 directories will be linked if possible.
 
+Note, this will link to files in the project so you'll want to keep the
+project hanging around.  Consider cloning to something like ~/.dotfiles.
 
 Customization
 ------------
