@@ -5,6 +5,12 @@
 _hostname=`hostname -s`
 
 
+# source in platform specific config
+os=`uname -s`
+if [ -f ~/etc/platform.d/$os.sh ]; then
+    . ~/etc/platform.d/$os.sh
+fi
+
 # source in any extra profile files
 if [ -d ~/etc/profile.d ]; then
   for i in ~/etc/profile.d/*.sh; do
