@@ -1,81 +1,72 @@
-parse_git_branch() {
-      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-  }
-#PS1="\w\$(parse_git_branch) $ "
+. ~/etc/aliases.sh
+. ~/bin/bash_colors.sh
+. ~/bin/git-completion.sh
+
+_hostname=`hostname -s`
 
 
-PATH=/usr/local/bin:$PATH:/opt/local/bin:/opt/local/sbin
+# source in any extra profile files
+if [ -d ~/etc/profile.d ]; then
+  for i in ~/etc/profile.d/*.sh; do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+  unset i
+fi
+
+# source in any extra alias files
+if [ -d ~/etc/aliases.d ]; then
+  for i in ~/etc/aliases.d/*.sh; do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+  unset i
+fi
+
+
+
+
+
+# common paths
+PATH=~/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/sbin:/sbin:$PATH
 export PATH
 
-JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home
-PATH=$JAVA_HOME/bin:$PATH
-export JAVA_HOME PATH
-#JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.5/Home
-#PATH=$JAVA_HOME/bin:$PATH
-#export JAVA_HOME PATH
-
-MAVEN_HOME=/opt/local/mvn
-export MAVEN_HOME
-
-# MySQL
-#
-PATH=$PATH:/usr/local/mysql/bin
-export PATH
-
-
-# GIT
-PATH=/usr/local/git/bin:$PATH
-export PATH
-
-PATH=$PATH:/sw/bin
-export PATH
-
-#postgres
-PATH=$PATH:/opt/local/lib/postgresql83/bin
-export PATH
-
-#groovy
-PATH=$PATH:/opt/local/groovy/bin
-export PATH
-
-#jruby
-PATH=$PATH:/opt/local/jruby/bin
-export PATH
-
-PATH=$PATH:~/bin
-export PATH
-
-# xuggler
-XUGGLE_HOME=/usr/local/xuggler
-PATH=$XUGGLE_HOME/bin:$PATH
-DYLD_LIBRARY_PATH=$XUGGLE_HOME/lib
-export XUGGLE_HOME PATH DYLD_LIBRARY_PATH
-
-#DYLD_LIBRARY_PATH=/usr/local/lib:/usr/lib:/sw/lib:/opt/local/lib
-#export DYLD_LIBRARY_PATH
-
-RED5_HOME=/Users/ssayles/src/red5-trunk/dist
-export RED5_HOME
 
 EDITOR=vim
 export EDITOR
 
-export PS1="\u@\h:\W$ "
-alias ls='ls -G'
-alias clj='java -jar /opt/local/clojure/clojure.jar'
 
-# adding subversion
-PATH=/opt/subversion/bin:$PATH
-export PATH
+git_prompt() {
+    local g="$(__gitdir)"
+    if [ -n "$g" ]; then
+        # The __git_ps1 function inserts the current git branch where %s is
+        local GIT_PROMPT=`__git_ps1 "(${GREEN}%s${NORMAL})"`
+        echo ${GIT_PROMPT}
+    fi
+}
+PS1="\u@\h:\$(git_prompt)\W \$ "
 
 
-PATH=/opt/local/node/bin:$PATH
-export PATH
+# make sure the terminal is colored
+export TERM='xterm-color'
+export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+export GREP_OPTIONS="--color"
 
-alias "aptana"="open /Applications/development/Aptana\ Studio\ 3/AptanaStudio3.app/"
+# Erase duplicates in history
+export HISTCONTROL=erasedups
+# Store 10k history entries
+export HISTSIZE=10000
+# Append to the history file when exiting instead of overwriting it
+shopt -s histappend
+
+
+# source in any host specific config
+_hostfile=~/etc/hosts.d/$_hostname.sh
+if [ -f $_hostfile ]; then
+    . $_hostfile
+fi
 
 
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-
-
-

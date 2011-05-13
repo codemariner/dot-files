@@ -1,0 +1,3 @@
+This directory contains scripts that will be sourced into ~/.bashrc based
+on the give file name and current hostname.  For example, if the current
+`host -s` value is "talon", the file "talon.sh" will be sourced.
