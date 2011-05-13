@@ -1,16 +1,22 @@
 #!/bin/bash
+#
+# uninstall script.  This will remove any links found in known directories that
+# point to files under the dot-files project.
+#
+# This will not delete any other files.
+#
 
-START_DIR=`pwd`
-
-# get absolute path to the top level directory
+# get absolute path to the top level directory of the project
 cd `dirname $0`
 ROOT_DIR=`pwd`
 
 trap 'echo "uninstall completed!"' 0
 
 echo "Removing links..."
-# unlink all files
 
+
+# given a directory, find all links that point to a corresponding
+# directory under the project and rm them
 function remove_links_from_dir() {
     local dir_name=$1
     cd ~/$dir_name
