@@ -44,17 +44,6 @@ EDITOR=vim
 export EDITOR
 
 
-git_prompt() {
-    local g="$(__gitdir)"
-    if [ -n "$g" ]; then
-        # The __git_ps1 function inserts the current git branch where %s is
-        local GIT_PROMPT=`__git_ps1 "(${GREEN}%s${NORMAL})"`
-        echo ${GIT_PROMPT}
-    fi
-}
-PS1="\u@\h:\$(git_prompt)\W \$ "
-
-
 # make sure the terminal is colored
 export TERM='xterm-color'
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
