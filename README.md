@@ -18,6 +18,10 @@ directories will be linked if possible.
 Note, this will link to files in the project so you'll want to keep the
 project hanging around.  Consider cloning to something like ~/.dotfiles.
 
+Also, the installation script is careful not to overwrite any existing
+files or directories and it should be safe enough to run multiple times.
+
+
 Customization
 ------------
 
