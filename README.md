@@ -22,6 +22,35 @@ Also, the installation script is careful not to overwrite any existing
 files or directories and it should be safe enough to run multiple times.
 
 
+Layout
+------
+Just to get an idea of the basic structure:
+
+    ~/
+      .bashrc -> ~/.dot-files/.bashrc
+      .bash_profile -> ~/.dot-files/.bash_profile
+      ./bin/
+          git-completion.sh -> ~/.dot-files/bin/git-completion.sh 
+      ./etc/
+          aliases.sh -> ~/.dot-files/aliases.sh
+          aliases.d/ -> ~/.dot-files/aliases.d/
+             *.sh
+          profile.d/ -> ~/.dot-files/profile.d/
+             *.sh
+          hosts.d/ -> ~/.dot-files/hosts.d/
+             `hostname -s`.sh
+          platform.d/ -> ~/.dot-files/platform.d/
+             `uname -s`.sh
+
+
+Uninstall
+---------
+There is an `uninstall.sh` script that will look for all links in your home
+directory that point to the project directory (i.e. where the uninstall script
+lives).  This won't recurse down all directories but only find links in the
+top level home directory and directly under the `~/bin` and `~/etc` directories.
+
+
 Customization
 ------------
 
