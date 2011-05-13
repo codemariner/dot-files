@@ -13,9 +13,9 @@ trap 'echo "install interrupted!"' 2 3 6 15
 # and link files
 #
 function replicate_dir {
-    dir_name="$1"
-    destdir=~/$dir_name
-    sourcedir=$ROOT_DIR/$dir_name
+    local dir_name="$1"
+    local destdir=~/$dir_name
+    local sourcedir=$ROOT_DIR/$dir_name
     echo "[$destdir]"
     if [ ! -d $destdir ]; then
         echo "  -> creating directory"
@@ -26,8 +26,8 @@ function replicate_dir {
 
     echo "  -> linking files..."
     for file in `ls $sourcedir`; do
-        filename=`basename $file`
-        destfile=$destdir/$filename
+        local filename=`basename $file`
+        local destfile=$destdir/$filename
     
         if [ ! -e $destfile ]; then
             echo "    ln -s $sourcedir/$file $destfile"
