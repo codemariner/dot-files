@@ -2,8 +2,8 @@ Dot-Files
 =========
 
 My collection of various shell scripts and dot files that should be
-modular and generic enough for others to use.  This is heavily biased
-toward bash.
+modular enough for others to extend with their own scripts.  This
+is heavily biased toward bash.
 
 
 Installation
