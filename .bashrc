@@ -57,6 +57,9 @@ export HISTSIZE=10000
 shopt -s histappend
 
 
+# command edit with vi
+set -o vi
+
 # source in any host specific config
 _hostfile=~/etc/hosts.d/$_hostname.sh
 if [ -f $_hostfile ]; then
