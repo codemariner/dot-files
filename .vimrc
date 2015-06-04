@@ -158,3 +158,16 @@ let mapleader=","
 map <leader>/f /^ *def\><cr>
 " Find class
 map <leader>/c /^ *class\><cr>
+
+function! SetupEnvironment()
+  let l:path = expand('%:p')
+  if l:path =~ '/home/ssayles/src/ua3'
+  endif
+endfunction
+autocmd! BufReadPost,BufNewFile * call SetupEnvironment()
+set noexpandtab
+set tabstop=4
+set shiftwidth=4
+
+
+call pathogen#infect()
