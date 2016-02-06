@@ -73,16 +73,7 @@ else
    set t_Sf=[3%dm
    set t_Sb=[4%dm
 endif
-"set background=light
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-  " set guifont=Monaco:h14
-  set guifont=Inconsolata-dz:h14
-endif
 filetype plugin on
 filetype indent on
 
@@ -169,5 +160,22 @@ set noexpandtab
 set tabstop=4
 set shiftwidth=4
 
+let g:fugitive_github_domains = ['github.ua.com']
+
+nnoremap <Leader>gb :.Gbrowse<CR>
+nnoremap <Leader>gB :.Gbrowse!<CR>
 
 call pathogen#infect()
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  syntax enable
+  set background=dark
+  set hlsearch
+  " set guifont=Monaco:h14
+  set guifont=Inconsolata-dz:h14
+endif
+" set background=light
+" highlight CursorLine ctermbg=LightGrey
