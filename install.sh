@@ -58,7 +58,7 @@ replicate_dir etc
 
 echo "linking dot files..."
 # find all '.' files that don't end in .swp and is not .git
-for file in `find . -depth 1 -name ".*" -not -name ".git" -not -name ".*.swp" -a`; do
+for file in `find . -maxdepth 1 -name ".*" -not -name ".git" -not -name ".*.swp"`; do
     filename=`basename $file`
     sourcefile=$ROOT_DIR/$filename
     destfile=~/$filename
