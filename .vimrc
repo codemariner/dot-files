@@ -160,8 +160,6 @@ set noexpandtab
 set tabstop=4
 set shiftwidth=4
 
-let g:fugitive_github_domains = ['github.ua.com']
-
 nnoremap <Leader>gb :.Gbrowse<CR>
 nnoremap <Leader>gB :.Gbrowse!<CR>
 
@@ -179,3 +177,6 @@ if &t_Co > 2 || has("gui_running")
 endif
 " set background=light
 " highlight CursorLine ctermbg=LightGrey
+
+" let g:github_enterprise_urls = ['https://github.ua.com']
+let g:fugitive_github_domains = ['github.ua.com']

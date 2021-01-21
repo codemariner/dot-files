@@ -1,6 +1,7 @@
 . ~/etc/aliases.sh
 . ~/bin/bash_colors.sh
 . ~/bin/git-completion.sh
+. ~/bin/git-prompt.sh
 
 _hostname=`hostname -s`
 
@@ -67,4 +68,4 @@ if [ -f $_hostfile ]; then
 fi
 
 
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
